@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Gamespace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Jost:wght@700;800;900&display=swap');
+        :root { --gs-lilac: #c4b7d5; --gs-navy: #252d47; --gs-pink: #e76f8a; --gs-white: #faf9f6; }
+        body { font-family: 'Fredoka', sans-serif; background-color: var(--gs-lilac); color: var(--gs-navy); }
+        .gs-box { background-color: var(--gs-white); border: 4px solid var(--gs-navy); border-radius: 16px; box-shadow: 6px 6px 0px var(--gs-navy); }
+        .gs-box-pink { background-color: var(--gs-pink); border: 4px solid var(--gs-navy); border-radius: 16px; box-shadow: 6px 6px 0px var(--gs-navy); color: white; }
+        .font-heading { font-family: 'Jost', sans-serif; text-transform: uppercase; }
+        input, textarea, select { border: 3px solid var(--gs-navy); border-radius: 8px; padding: 8px; width: 100%; outline: none; }
+        input:focus { border-color: var(--gs-pink); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-black font-heading">Input Karya Anggota</h1>
+            <a href="index.html" class="gs-box px-4 py-2 font-bold text-sm">Kembali ke Web</a>
+        </div>
+
+        <div class="gs-box p-6 md:p-8 mb-8">
+            <form id="game-form" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold mb-1">Judul Game</label>
+                        <input type="text" id="title" required placeholder="Contoh: Ajisaka Project">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Game Engine</label>
+                        <select id="engine">
+                            <option value="Unity">Unity</option>
+                            <option value="Godot">Godot</option>
+                            <option value="Unreal">Unreal Engine</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1">Deskripsi Singkat</label>
+                    <textarea id="description" rows="3" required placeholder="Jelaskan tentang game ini..."></textarea>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold mb-1">URL Gambar (Thumbnail)</label>
+                        <input type="url" id="image" placeholder="https://image-url.com/foto.jpg">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Link Play/Download</label>
+                        <input type="url" id="link" placeholder="https://hagegames.com/game-anda">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 py-2">
+                    <input type="checkbox" id="isAward" class="w-auto">
+                    <label for="isAward" class="font-bold">Award Winning?</label>
+                </div>
+
+                <button type="submit" class="gs-box-pink w-full py-3 font-black font-heading text-xl mt-4 hover:brightness-110">
+                    SIMPAN KARYA
+                </button>
+            </form>
+        </div>
+
+        <div class="gs-box p-6">
+            <h2 class="text-xl font-black font-heading mb-4">Daftar Karya Tersimpan</h2>
+            <div id="admin-list" class="space-y-3">
+                <!-- List will be here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('game-form');
+        const list = document.getElementById('admin-list');
+
+        function loadAdminList() {
+            const games = JSON.parse(localStorage.getItem('gs_games')) || [];
+            list.innerHTML = games.map((game, index) => `
+                <div class="flex justify-between items-center p-3 border-2 border-[#252d47] rounded-lg">
+                    <div>
+                        <span class="font-bold">${game.title}</span>
+                        <span class="text-xs ml-2 opacity-60 uppercase">(${game.engine})</span>
+                    </div>
+                    <button onclick="deleteGame(${index})" class="text-red-500 hover:scale-110">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('') || '<p class="opacity-50 text-center">Belum ada data.</p>';
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const games = JSON.parse(localStorage.getItem('gs_games')) || [];
+            
+            const newGame = {
+                title: document.getElementById('title').value,
+                engine: document.getElementById('engine').value,
+                description: document.getElementById('description').value,
+                image: document.getElementById('image').value,
+                link: document.getElementById('link').value,
+                isAward: document.getElementById('isAward').checked,
+                category: document.getElementById('engine').value.toLowerCase()
+            };
+
+            games.push(newGame);
+            localStorage.setItem('gs_games', JSON.stringify(games));
+            form.reset();
+            loadAdminList();
+            alert('Karya berhasil disimpan!');
+        });
+
+        window.deleteGame = (index) => {
+            if (confirm('Hapus karya ini?')) {
+                const games = JSON.parse(localStorage.getItem('gs_games')) || [];
+                games.splice(index, 1);
+                localStorage.setItem('gs_games', JSON.stringify(games));
+                loadAdminList();
+            }
+        };
+
+        loadAdminList();
+    </script>
+</body>
+</html>
