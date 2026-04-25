@@ -1,263 +1,281 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UKM Gamespace - Showcase</title>
+    <title>UKM Gamespace - PENS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;800&family=Montserrat:wght@400;500;600&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Jost:wght@700;800;900&display=swap');
+
         :root {
-            --gs-blue: #0056b3;
-            --gs-red: #ff4d4d;
-            --gs-dark: #1a1a1a;
-            --gs-light: #ffffff;
+            --gs-lilac: #c4b7d5;
+            --gs-navy: #252d47;
+            --gs-pink: #e76f8a;
+            --gs-white: #faf9f6;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f7f6;
-            color: var(--gs-dark);
+            font-family: 'Fredoka', sans-serif;
+            background-color: var(--gs-lilac);
+            color: var(--gs-navy);
         }
 
-        h1, h2, h3, .nav-link {
-            font-family: 'League Spartan', sans-serif;
+        h1, h2, h3, .font-heading {
+            font-family: 'Jost', sans-serif;
             text-transform: uppercase;
+        }
+
+        /* Blocky Design System */
+        .gs-box {
+            background-color: var(--gs-white);
+            border: 4px solid var(--gs-navy);
+            border-radius: 16px;
+            box-shadow: 6px 6px 0px var(--gs-navy);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gs-box-pink {
+            background-color: var(--gs-pink);
+            border: 4px solid var(--gs-navy);
+            border-radius: 16px;
+            box-shadow: 6px 6px 0px var(--gs-navy);
+        }
+
+        .gs-tag {
+            background-color: var(--gs-navy);
+            color: var(--gs-white);
+            font-family: 'Jost', sans-serif;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 16px 16px 0 0;
+            display: inline-block;
+            font-size: 1.1rem;
             letter-spacing: 0.05em;
         }
 
-        .gs-badge {
-            filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.1));
-            transition: transform 0.2s ease;
+        /* Diagonal Stripes Pattern */
+        .stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.3) 10px,
+                rgba(255, 255, 255, 0.3) 20px
+            );
         }
 
-        .gs-badge:hover {
-            transform: scale(1.05) rotate(3deg);
+        .stripes-navy {
+            background: repeating-linear-gradient(
+                70deg,
+                var(--gs-navy),
+                var(--gs-navy) 8px,
+                transparent 8px,
+                transparent 16px
+            );
         }
 
-        .section-title {
-            position: relative;
+        /* Title Styling */
+        .title-game {
+            color: var(--gs-white);
+            -webkit-text-stroke: 3px var(--gs-pink);
+            text-shadow: 4px 4px 0px var(--gs-navy);
+            font-size: clamp(4rem, 15vw, 8rem);
+            line-height: 0.8;
+            letter-spacing: -0.02em;
+        }
+
+        .title-space {
+            color: var(--gs-pink);
+            -webkit-text-stroke: 3px var(--gs-navy);
+            text-shadow: 6px 6px 0px var(--gs-navy), -2px -2px 0 var(--gs-white), 2px -2px 0 var(--gs-white), -2px 2px 0 var(--gs-white), 2px 2px 0 var(--gs-white);
+            font-size: clamp(4rem, 15vw, 8rem);
+            line-height: 0.8;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle-box {
+            border: 4px solid var(--gs-navy);
+            border-radius: 50px;
+            background: var(--gs-white);
+            color: var(--gs-pink);
+            padding: 8px 24px;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            box-shadow: inset 0 0 0 2px var(--gs-white), 4px 4px 0px var(--gs-navy);
             display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--gs-red);
-        }
-
-        .card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: var(--gs-blue);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .btn-primary {
-            background-color: var(--gs-blue);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 6px;
-            font-weight: 700;
-            text-transform: uppercase;
+            margin-top: 1rem;
             letter-spacing: 0.1em;
-            transition: opacity 0.2s;
         }
 
-        .btn-primary:hover {
-            opacity: 0.9;
+        .btn-hover:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px var(--gs-navy);
         }
-
-        .sticker-decor {
-            position: absolute;
-            z-index: 0;
-            opacity: 0.15;
-            pointer-events: none;
+        .btn-hover:active {
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px var(--gs-navy);
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="flex flex-col min-h-screen">
 
-    <!-- Simple Nav -->
-    <nav class="bg-white border-b-2 border-slate-100 py-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="badge 2 print.png" class="h-10 w-10" alt="Logo">
-                <div class="flex flex-col leading-none">
-                    <span class="font-bold text-xl text-blue-700">GAMESPACE</span>
-                    <span class="text-[10px] tracking-widest text-slate-400">BEYOND THE SPACE</span>
-                </div>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-bold nav-link">
-                <a href="#about" class="hover:text-blue-600 transition">Misi</a>
-                <a href="#activities" class="hover:text-blue-600 transition">Kegiatan</a>
-                <a href="#projects" class="hover:text-blue-600 transition">Karya</a>
-                <a href="#contact" class="text-red-500 hover:text-red-600 transition">Gabung</a>
+    <!-- Top Bar -->
+    <div class="bg-[#252d47] text-white py-2 px-4 flex justify-between items-center border-b-4 border-[#252d47]">
+        <div class="w-16 h-8 stripes"></div>
+        <div class="flex items-center gap-4 text-xs font-heading tracking-widest">
+            <span><i class="fas fa-gamepad mr-2"></i>UKM GAMESPACE PENS</span>
+        </div>
+        <div class="w-16 h-8 stripes"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto w-full px-4 py-12 flex flex-col gap-10">
+
+        <!-- Hero Title -->
+        <div class="text-center font-heading">
+            <h1 class="title-game">GAME</h1>
+            <h1 class="title-space">SPACE</h1>
+            <div class="subtitle-box mt-4">
+                BEYOND THE SPACE
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Section: Clean & Bold -->
-    <header class="relative bg-white py-20 px-6 border-b-4 border-blue-700">
-        <img src="badge 3 print.png" class="sticker-decor w-64 top-10 right-10" alt="">
-        <img src="BADGE 1 print.png" class="sticker-decor w-48 bottom-10 left-10 rotate-12" alt="">
-        
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
-            <div class="md:w-3/5 text-center md:text-left">
-                <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded text-xs font-bold mb-4">EST. 2021</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-none mb-6">
-                    Wadah Kreatif <br><span class="text-blue-700">Game Developer</span> Muda.
-                </h1>
-                <p class="text-lg text-slate-600 mb-8 max-w-2xl leading-relaxed">
-                    Kami adalah Unit Kegiatan Mahasiswa yang berfokus pada kolaborasi, riset, dan pengembangan video game di lingkungan kampus.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="#projects" class="btn-primary">Lihat Portfolio</a>
-                    <a href="#about" class="border-2 border-slate-200 px-8 py-3 rounded-6 font-bold uppercase text-sm hover:bg-slate-50 transition">Kenali Kami</a>
-                </div>
-            </div>
-            <div class="md:w-2/5 flex justify-center">
-                <img src="badge 2 print.png" class="w-64 md:w-80 gs-badge" alt="Gamespace Badge">
-            </div>
-        </div>
-    </header>
-
-    <!-- Banner Section -->
-    <section id="about" class="py-16 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <img src="BANNER.png" class="rounded-xl shadow-lg border-4 border-white" alt="Gamespace Banner">
-                    <div class="absolute -bottom-6 -right-6 w-32 hidden md:block">
-                        <img src="badge 3 print.png" class="gs-badge" alt="">
-                    </div>
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold section-title">Visi & Misi</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        UKM Gamespace hadir untuk memfasilitasi mahasiswa yang memiliki minat dalam industri kreatif, khususnya game development. Kami percaya bahwa kolaborasi lintas disiplin adalah kunci utama.
+        <!-- Section: Tentang & Daftar Kegiatan -->
+        <div class="flex flex-col gap-6">
+            <!-- Tentang -->
+            <div>
+                <div class="gs-tag ml-4 relative top-1">TENTANG GAMESPACE</div>
+                <div class="gs-box p-6 md:p-8">
+                    <p class="text-lg md:text-xl font-medium leading-relaxed">
+                        Suka game? Maka Gamespace adalah tempat yang tepat buat kalian! Gamespace adalah UKM pengembang game yang menjadi wadah agar kalian bisa mewujudkan game impian melalui kegiatan - kegiatan yang menarik.
                     </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-white rounded-lg border-l-4 border-blue-500 shadow-sm">
-                            <h4 class="font-bold text-sm mb-1 uppercase text-blue-700">Kolaborasi</h4>
-                            <p class="text-xs text-slate-500">Membangun tim solid dari berbagai background.</p>
-                        </div>
-                        <div class="p-4 bg-white rounded-lg border-l-4 border-red-500 shadow-sm">
-                            <h4 class="font-bold text-sm mb-1 uppercase text-red-500">Kompetisi</h4>
-                            <p class="text-xs text-slate-500">Berprestasi di ajang KMIPN & GEMASTIK.</p>
-                        </div>
+                </div>
+            </div>
+
+            <!-- Kegiatan -->
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- QR Code Placeholder (Like Banner) -->
+                <div class="gs-box p-4 bg-white flex items-center justify-center aspect-square md:w-48 flex-shrink-0">
+                    <div class="w-full h-full bg-[#252d47] rounded flex items-center justify-center text-white flex-col gap-2 p-2">
+                        <i class="fas fa-qrcode text-5xl"></i>
+                        <span class="font-heading text-xs text-center">SCAN TO JOIN</span>
+                    </div>
+                </div>
+
+                <!-- Daftar Kegiatan Box -->
+                <div class="flex-grow">
+                    <div class="gs-tag ml-4 relative top-1">DAFTAR KEGIATAN</div>
+                    <div class="gs-box-pink p-6 h-full border-t-4 border-[#252d47] rounded-tl-none">
+                        <ul class="text-white text-lg md:text-xl font-semibold space-y-3">
+                            <li class="flex items-center gap-3">
+                                <div class="w-4 h-4 bg-white rounded-full border-2 border-[#252d47]"></div>
+                                Diskusi teknis pembuatan game
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-4 h-4 bg-white rounded-full border-2 border-[#252d47]"></div>
+                                Materi pembuatan game
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-4 h-4 bg-white rounded-full border-2 border-[#252d47]"></div>
+                                Play Together
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Activities Grid -->
-    <section id="activities" class="py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold section-title">Kegiatan Rutin</h2>
+        <!-- Image Banner & Contact -->
+        <div class="gs-box overflow-hidden bg-white">
+            <div class="h-[250px] md:h-[400px] border-b-4 border-[#252d47] relative">
+                <!-- Using the actual banner image -->
+                <img src="BANNER.png" alt="Gamespace Activities" class="w-full h-full object-cover grayscale opacity-90 contrast-125 sepia-[0.2] hue-rotate-180">
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card p-8">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg mb-6 text-xl">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">GDC (Conference)</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Sesi sharing mingguan mengenai trend industri game dan review project internal.</p>
+            
+            <div class="bg-white flex flex-col md:flex-row items-center">
+                <div class="p-4 px-6 md:w-auto w-full border-b-4 md:border-b-0 md:border-r-4 border-[#252d47] font-heading text-xl md:text-2xl text-center md:text-left">
+                    CONTACT PERSON
                 </div>
-                <div class="card p-8 border-t-4 border-t-red-500">
-                    <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-lg mb-6 text-xl">
-                        <i class="fas fa-code"></i>
+                <div class="flex-grow flex items-center p-4 px-6 gap-4">
+                    <div class="w-12 h-12 bg-[#e76f8a] border-2 border-[#252d47] rounded-full flex items-center justify-center text-white text-xl flex-shrink-0 shadow-[2px_2px_0px_#252d47]">
+                        <i class="fas fa-phone-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Intensive Workshop</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Pelatihan teknis mulai dari Unity Engine, Blender 3D, hingga Game Design Document.</p>
-                </div>
-                <div class="card p-8">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 flex items-center justify-center rounded-lg mb-6 text-xl">
-                        <i class="fas fa-flask"></i>
+                    <div class="font-heading">
+                        <div class="text-xl md:text-2xl">REYHAN</div>
+                        <div class="text-lg md:text-xl text-[#252d47]">0858-0272-3727</div>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Game Jam</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Tantangan membuat prototype game dalam waktu singkat (48 jam) secara berkelompok.</p>
                 </div>
+                <!-- Decorative stripes block -->
+                <div class="hidden md:block w-32 h-20 stripes-navy ml-auto mr-6"></div>
             </div>
         </div>
-    </section>
 
-    <!-- Portfolio / Karya -->
-    <section id="projects" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold section-title border-red-500">Karya Anggota</h2>
-                    <p class="text-slate-400 mt-2">Kebanggaan hasil riset dan kerja keras tim kami.</p>
-                </div>
-                <img src="BADGE 1 print.png" class="h-20 opacity-50 hidden md:block" alt="">
-            </div>
+        <!-- Yuk Gabung & Benefits -->
+        <div class="gs-box-pink p-6 md:p-10 mb-12 flex flex-col gap-6">
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="group relative overflow-hidden rounded-2xl bg-slate-800 border border-slate-700">
-                    <div class="h-64 bg-slate-700">
-                         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-60" alt="">
+            <div class="text-center font-heading text-3xl md:text-4xl text-white mb-2 relative">
+                <span class="bg-[#252d47] px-8 py-2 rounded-full border-4 border-white inline-block shadow-[4px_4px_0px_#ffffff]">
+                    <span class="text-[#e76f8a]">•</span> YUK GABUNG <span class="text-[#e76f8a]">•</span>
+                </span>
+            </div>
+
+            <div class="bg-white border-4 border-[#252d47] rounded-xl p-4 text-center font-heading text-xl md:text-2xl shadow-[4px_4px_0px_#252d47]">
+                APA AJA SIH BENEFIT YANG BAKAL KALIAN DAPATKAN?
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                
+                <!-- Benefit 1 -->
+                <div class="gs-box flex flex-col btn-hover transition-all">
+                    <div class="bg-[#252d47] text-white font-heading px-4 py-2 text-xl border-b-4 border-[#252d47]">1</div>
+                    <div class="p-6 flex-grow flex items-center justify-center">
+                        <i class="fas fa-book-reader text-6xl text-[#252d47]"></i>
                     </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-bold">AJISAKA PROJECT</h3>
-                            <span class="bg-red-600 text-[10px] font-bold px-2 py-1 rounded">JUARA 1 KMIPN</span>
-                        </div>
-                        <p class="text-slate-400 text-sm mb-6">Game petualangan edukasi budaya yang berhasil meraih penghargaan nasional.</p>
-                        <a href="#" class="text-blue-400 font-bold hover:underline">Pelajari Selengkapnya →</a>
-                    </div>
-                </div>
-                <div class="grid gap-6">
-                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex gap-4">
-                        <div class="w-20 h-20 bg-slate-700 rounded-lg flex-shrink-0"></div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">DREAMWALKER</h4>
-                            <p class="text-slate-400 text-xs">A local multi-player puzzle game developed during Global Game Jam.</p>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex gap-4">
-                        <div class="w-20 h-20 bg-slate-700 rounded-lg flex-shrink-0"></div>
-                        <div>
-                            <h4 class="font-bold text-lg mb-1">NEO-SURABAYA 2050</h4>
-                            <p class="text-slate-400 text-xs">Project riset world building dengan sentuhan budaya lokal Jawa Timur.</p>
-                        </div>
+                    <div class="bg-[#252d47] text-white font-heading text-center p-3 text-lg">
+                        Materi yang seru
                     </div>
                 </div>
+
+                <!-- Benefit 2 -->
+                <div class="gs-box flex flex-col btn-hover transition-all">
+                    <div class="bg-[#252d47] text-white font-heading px-4 py-2 text-xl border-b-4 border-[#252d47]">2</div>
+                    <div class="p-6 flex-grow flex items-center justify-center">
+                        <i class="fas fa-user-friends text-6xl text-[#252d47]"></i>
+                    </div>
+                    <div class="bg-[#252d47] text-white font-heading text-center p-3 text-lg leading-tight">
+                        Relasi di bidang yang sama
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="gs-box flex flex-col btn-hover transition-all">
+                    <div class="bg-[#252d47] text-white font-heading px-4 py-2 text-xl border-b-4 border-[#252d47]">3</div>
+                    <div class="p-6 flex-grow flex items-center justify-center">
+                        <i class="fas fa-tasks text-6xl text-[#252d47]"></i>
+                    </div>
+                    <div class="bg-[#252d47] text-white font-heading text-center p-3 text-lg">
+                        Konversi SKS
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="py-20 bg-white border-t-2 border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <img src="badge 2 print.png" class="h-20 mx-auto mb-8" alt="">
-            <h2 class="text-4xl font-extrabold mb-4">AYO BERKOLABORASI!</h2>
-            <p class="text-slate-500 mb-10 max-w-xl mx-auto">Kami selalu membuka pintu bagi siapa saja yang ingin belajar dan berkontribusi dalam dunia game development.</p>
-            
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="https://instagram.com/gamespacepens" target="_blank" class="text-2xl text-slate-400 hover:text-red-500"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-2xl text-slate-400 hover:text-blue-600"><i class="fab fa-discord"></i></a>
-                <a href="#" class="text-2xl text-slate-400 hover:text-slate-900"><i class="fab fa-github"></i></a>
-            </div>
-            
-            <div class="text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase">
-                &copy; 2026 UKM GAMESPACE • BEYOND THE SPACE
-            </div>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="bg-[#252d47] text-white border-t-4 border-[#252d47] mt-auto">
+        <div class="max-w-4xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-center gap-8 md:gap-16 font-heading text-lg">
+            <a href="https://instagram.com/gamespace_pens" target="_blank" class="flex items-center gap-3 hover:text-[#e76f8a] transition">
+                <i class="fab fa-instagram text-2xl"></i>
+                @gamespace_pens
+            </a>
+            <a href="https://youtube.com/@GamespaceLearning" target="_blank" class="flex items-center gap-3 hover:text-[#e76f8a] transition">
+                <i class="fab fa-youtube text-2xl"></i>
+                @GamespaceLearning
+            </a>
         </div>
     </footer>
 
