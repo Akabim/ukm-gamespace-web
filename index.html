@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UKM Gamespace - Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+        
+        :root {
+            --primary: #FFD700; /* Assuming gold/yellow from some game logos */
+            --accent: #FF3E00;
+            --bg-dark: #050505;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .sticker {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .sticker:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 30%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .activity-card:hover .activity-icon {
+            transform: translateY(-5px) scale(1.1);
+            color: var(--primary);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Decorative Stickers (Badges) -->
+    <img src="badge 3 print.png" class="sticker w-24 md:w-32 top-20 -left-10 md:left-10 opacity-80 rotate-[-15deg]" alt="Sticker 1">
+    <img src="badge 2 print.png" class="sticker w-28 md:w-36 top-[40%] -right-12 md:right-20 opacity-80 rotate-[12deg]" alt="Sticker 2">
+    <img src="BADGE 1 print.png" class="sticker w-20 md:w-24 bottom-20 left-5 md:left-20 opacity-80 rotate-[5deg]" alt="Sticker 3">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-2xl px-6 py-3">
+            <div class="flex items-center gap-3">
+                <img src="badge 2 print.png" class="h-8 w-8" alt="Logo">
+                <span class="font-bold text-xl tracking-tighter uppercase">Gamespace</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-gray-400">
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#activities" class="hover:text-white transition">Activities</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#contact" class="hover:text-white transition">Join</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20">
+        <div class="relative inline-block mb-6">
+            <span class="inline-block px-4 py-1 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase mb-4">Official Community</span>
+            <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-4">
+                BUILD <span class="gradient-text">GAMES</span><br>
+                CREATE <span class="gradient-text">SPACE</span>
+            </h1>
+        </div>
+        <p class="max-w-xl text-gray-400 text-lg mb-10">
+            Wadah kreatif mahasiswa untuk mengeksplorasi dunia pengembangan game, dari ide hingga peluncuran.
+        </p>
+        <div class="flex gap-4">
+            <a href="#activities" class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition">Our Journey</a>
+            <a href="#projects" class="glass-panel px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">View Games</a>
+        </div>
+    </section>
+
+    <!-- Banner Image / About -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="relative rounded-3xl overflow-hidden border border-white/10 mb-16">
+                <img src="BANNER.png" class="w-full h-[400px] object-cover" alt="Banner Gamespace">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex items-end p-8 md:p-12">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-bold mb-4 uppercase">Siapa Kami?</h2>
+                        <p class="max-w-2xl text-gray-300">UKM Gamespace (PENS) adalah komunitas pengembang game yang berfokus pada kolaborasi, inovasi, dan pengembangan skill teknis mulai dari programming, art, hingga game design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.3em] uppercase text-gray-500">What we do</span>
+                    <h2 class="text-4xl font-bold uppercase mt-2">Core Activities</h2>
+                </div>
+                <p class="text-gray-400 max-w-sm">Membangun ekosistem pengembang game yang suportif melalui berbagai program intensif.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass-panel p-8 rounded-3xl activity-card transition-all">
+                    <i class="fas fa-microphone-alt text-3xl mb-6 activity-icon transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-3 uppercase">GDC</h3>
+                    <p class="text-sm text-gray-400">Game Developer Conference: Sharing ilmu dan pengalaman antar developer.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl activity-card transition-all">
+                    <i class="fas fa-tools text-3xl mb-6 activity-icon transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-3 uppercase">Workshop</h3>
+                    <p class="text-sm text-gray-400">Pelatihan rutin Unity, Unreal Engine, Blender, dan Game Design.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl activity-card transition-all">
+                    <i class="fas fa-gamepad text-3xl mb-6 activity-icon transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-3 uppercase">Exhibition</h3>
+                    <p class="text-sm text-gray-400">Pameran game karya anggota untuk mendapatkan feedback langsung.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl activity-card transition-all">
+                    <i class="fas fa-trophy text-3xl mb-6 activity-icon transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-3 uppercase">Competition</h3>
+                    <p class="text-sm text-gray-400">Mempersiapkan tim untuk ajang bergengsi seperti KMIPN & GEMASTIK.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold uppercase mb-12 text-center">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="relative group rounded-3xl overflow-hidden border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80" class="w-full h-[350px] object-cover group-hover:scale-105 transition duration-500" alt="Ajisaka">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-8 flex flex-col justify-end">
+                        <span class="text-xs font-bold uppercase tracking-widest text-yellow-500 mb-2">Award Winning</span>
+                        <h3 class="text-3xl font-bold uppercase">Ajisaka Project</h3>
+                        <p class="text-gray-300 text-sm mt-2">Juara 1 Pengembangan Aplikasi Permainan KMIPN 2022.</p>
+                    </div>
+                </div>
+                <div class="grid gap-8">
+                    <div class="glass-panel p-8 rounded-3xl flex gap-6 items-center">
+                        <div class="w-24 h-24 bg-white/5 rounded-2xl flex-shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold uppercase">Community Game Jam</h4>
+                            <p class="text-sm text-gray-400 mt-1">Project kolaboratif yang dibangun dalam waktu 48 jam oleh anggota baru.</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl flex gap-6 items-center">
+                        <div class="w-24 h-24 bg-white/5 rounded-2xl flex-shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold uppercase">Mobile VR Experience</h4>
+                            <p class="text-sm text-gray-400 mt-1">Eksperimen teknologi VR untuk edukasi budaya lokal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold uppercase mb-8">Ready to Level Up?</h2>
+            <div class="flex justify-center gap-4 mb-12">
+                <a href="https://instagram.com/gamespacepens" target="_blank" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full hover:bg-white hover:text-black transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full hover:bg-white hover:text-black transition">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full hover:bg-white hover:text-black transition">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 text-xs tracking-widest uppercase">&copy; 2026 UKM Gamespace. Designed for the Future of Games.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Floating animation for stickers
+        document.addEventListener('mousemove', (e) => {
+            const stickers = document.querySelectorAll('.sticker');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            stickers.forEach((sticker, index) => {
+                const speed = (index + 1) * 20;
+                sticker.style.transform = `translate(${x * speed}px, ${y * speed}px) rotate(${(index * 10) - 5}deg)`;
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
