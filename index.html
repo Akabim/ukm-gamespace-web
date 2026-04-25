@@ -43,7 +43,7 @@
             box-shadow: 6px 6px 0px var(--gs-navy);
         }
 
-        /* Pill Button Style (Inspired by "Beyond the Space") */
+        /* Pill Button Style */
         .gs-pill-btn {
             background-color: var(--gs-white);
             border: 4px solid var(--gs-navy);
@@ -99,27 +99,51 @@
             letter-spacing: 0.05em;
         }
 
-        /* Enhanced Hero Text Style */
-        .title-game {
-            color: var(--gs-white);
-            -webkit-text-stroke: 3px var(--gs-pink);
-            text-shadow: 6px 6px 0px var(--gs-navy);
-            font-size: clamp(4rem, 15vw, 8.5rem);
-            line-height: 0.8;
-            letter-spacing: -0.02em;
+        /* --- GAYAREPLIKA LOGO DARI GAMBAR --- */
+        .gs-replica-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+            margin-bottom: 2rem;
         }
 
-        .title-space {
-            color: var(--gs-pink);
-            -webkit-text-stroke: 3px var(--gs-navy);
-            text-shadow: 8px 8px 0px var(--gs-navy), 
-                         -2px -2px 0 var(--gs-white), 
-                         2px -2px 0 var(--gs-white), 
-                         -2px 2px 0 var(--gs-white), 
-                         2px 2px 0 var(--gs-white);
-            font-size: clamp(4rem, 15vw, 8.5rem);
+        .gs-replica-text-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: rotate(-1deg);
+        }
+
+        .gs-replica-text {
+            font-family: 'Jost', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #F66699; 
+            -webkit-text-stroke: 3px #252D47; 
+            text-shadow: 8px 8px 0px #252D47;
+            font-size: clamp(4rem, 15vw, 9rem); 
             line-height: 0.8;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+        }
+
+        .gs-replica-text.space {
+            margin-top: -0.1em;
+        }
+
+        .gs-replica-tagline-capsule {
+            background-color: #252D47; 
+            color: #faf9f6; 
+            border: 4px solid #faf9f6; 
+            border-radius: 999px; 
+            padding: 10px 40px;
+            margin-top: 20px; 
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 3vw, 1.4rem);
+            letter-spacing: 0.15em; 
+            text-transform: uppercase;
+            box-shadow: 5px 5px 0px rgba(37, 45, 71, 0.5);
         }
 
         .nav-link:hover {
@@ -168,17 +192,25 @@
     </nav>
 
     <!-- Home Section -->
-    <header class="pt-24 pb-16 px-4 text-center">
-        <div class="max-w-5xl mx-auto">
-            <h1 class="title-game font-black">GAME</h1>
-            <h1 class="title-space font-black">SPACE</h1>
-            <div class="mt-12 flex flex-wrap justify-center gap-6">
-                <a href="https://www.instagram.com/gamespace_pens" target="_blank" class="gs-pill-btn-pink">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="#projects" class="gs-pill-btn">
-                    Lihat Karya
-                </a>
+    <header class="pt-20 pb-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="gs-replica-container">
+                <div class="gs-replica-text-block">
+                    <span class="gs-replica-text game">GAME</span>
+                    <span class="gs-replica-text space">SPACE</span>
+                </div>
+                <div class="gs-replica-tagline-capsule">
+                    BEYOND THE SPACE
+                </div>
+            </div>
+            
+            <p class="mt-8 text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-tight">
+                Wadah kreatif mahasiswa untuk mengeksplorasi dunia pengembangan game, dari ide hingga peluncuran.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="gs-box px-8 py-3 font-heading font-black bg-white hover:bg-pink-50 transition-all">Lihat Karya</a>
+                <a href="#join" class="gs-box-pink px-8 py-3 font-heading font-black text-white hover:brightness-110 transition-all">Gabung Sekarang</a>
             </div>
         </div>
     </header>
@@ -190,7 +222,6 @@
             <div class="gs-box overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <div class="h-64 md:h-full border-b-4 md:border-b-0 md:border-r-4 border-[#252d47]">
-                        <!-- Using explicit current dir path to ensure it loads -->
                         <img src="./banner-about.png" class="w-full h-full object-cover" alt="Gamespace About Banner">
                     </div>
                     <div class="p-8 flex flex-col justify-center">
@@ -245,16 +276,6 @@
     <section id="projects" class="py-16 px-4">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-center text-4xl font-black mb-8">Karya Teman-Teman</h2>
-            
-            <!-- Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button class="filter-btn active gs-pill-btn !py-2 !text-sm" data-filter="all">All</button>
-                <button class="filter-btn gs-pill-btn !py-2 !text-sm bg-white" data-filter="unity">Unity</button>
-                <button class="filter-btn gs-pill-btn !py-2 !text-sm bg-white" data-filter="godot">Godot</button>
-                <button class="filter-btn gs-pill-btn !py-2 !text-sm bg-white" data-filter="award">Awards</button>
-            </div>
-
-            <!-- Empty Grid for Dynamic Content -->
             <div id="game-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- Content loaded from localStorage -->
             </div>
@@ -282,7 +303,7 @@
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
             <div class="flex items-center gap-3">
                 <img src="badge 2 print.png" class="h-10 w-10 brightness-200" alt="">
-                <span class="font-black text-2xl tracking-tighter">GAMESPACE</span>
+                <span class="font-black text-2xl tracking-tighter text-white">GAMESPACE</span>
             </div>
             <div class="flex flex-wrap justify-center gap-10 font-black text-sm uppercase">
                 <a href="https://instagram.com/gamespace_pens" target="_blank" class="hover:text-pink-500 transition-all">Instagram</a>
@@ -291,14 +312,12 @@
             <div class="text-[10px] font-black tracking-widest opacity-30 uppercase">
                 © 2026 GAMESPACE • BEYOND THE SPACE
                 <br>
-                <!-- Secret Admin Link -->
                 <a href="admin.html" class="hover:opacity-100 transition-opacity">System Entry</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', () => {
@@ -306,7 +325,6 @@
             mobileMenu.classList.toggle('flex');
         });
 
-        // Load Games from LocalStorage
         function loadGames() {
             const grid = document.getElementById('game-grid');
             const games = JSON.parse(localStorage.getItem('gs_games')) || [];
@@ -314,50 +332,23 @@
                 grid.innerHTML = '<div class="col-span-full text-center font-bold opacity-30 py-10">Belum ada karya yang diunggah.</div>';
                 return;
             }
-            renderGames(games);
-        }
-
-        function renderGames(games) {
-            const grid = document.getElementById('game-grid');
             grid.innerHTML = games.map(game => `
-                <div class="game-card gs-box overflow-hidden card-hover transition-all bg-white" data-category="${game.category.toLowerCase()}">
+                <div class="game-card gs-box overflow-hidden card-hover transition-all bg-white">
                     <div class="h-48 border-b-4 border-[#252d47] relative">
                         <img src="${game.image || 'https://via.placeholder.com/400x200'}" class="w-full h-full object-cover" alt="${game.title}">
                         ${game.isAward ? '<div class="absolute top-2 left-2 gs-tag !text-[10px]">Award Winning</div>' : ''}
                     </div>
                     <div class="p-6">
-                        <h4 class="text-xl font-black mb-2">${game.title}</h4>
+                        <h4 class="text-xl font-black mb-2 uppercase">${game.title}</h4>
                         <p class="text-sm font-medium mb-4 h-12 line-clamp-2">${game.description}</p>
                         <div class="flex items-center justify-between mt-auto">
                             <span class="bg-blue-100 border-2 border-[#252d47] px-2 py-1 rounded text-[10px] font-bold uppercase">${game.engine}</span>
-                            <a href="${game.link || 'https://hagegames.com'}" target="_blank" class="text-pink-500 font-black text-xs hover:underline uppercase">Mainkan →</a>
+                            <a href="${game.link || '#'}" target="_blank" class="text-pink-500 font-black text-xs hover:underline uppercase">Mainkan →</a>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
-
-        // Filter Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.classList.add('bg-white');
-                });
-                btn.classList.add('active');
-                btn.classList.remove('bg-white');
-                const filter = btn.getAttribute('data-filter');
-                const cards = document.querySelectorAll('.game-card');
-                cards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    const isAward = card.querySelector('.gs-tag') !== null;
-                    if (filter === 'all') card.style.display = 'block';
-                    else if (filter === 'award') card.style.display = isAward ? 'block' : 'none';
-                    else card.style.display = category === filter ? 'block' : 'none';
-                });
-            });
-        });
 
         window.onload = loadGames;
     </script>
